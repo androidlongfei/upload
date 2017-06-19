@@ -1,0 +1,25 @@
+{
+  "name": "arale-upload",
+  "description": "html5 uploader and iframe uploader.",
+  "main": "index.js",
+  "authors": [
+    "Hsiaoming Yang <me@lepture.com>"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "utility",
+    "upload",
+    "ajax",
+    "upload",
+    "iframe",
+    "upload"
+  ],
+  "homepage": "https://github.com/aralejs/upload",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
