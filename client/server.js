@@ -11,21 +11,29 @@ var _ = require('lodash')
 app.use(cors());
 app.use(bodyParser.json()); // for parsing application/json
 app.use(bodyParser.urlencoded({
-  extended: true
+    extended: true
 })); // for parsing application/x-www-form-urlencoded
 
 
 app.use(express.static(path.join(__dirname, 'src')));
 
-app.get('/', function(req, res) {
-  res.sendFile(path.join(__dirname, 'src', 'upload.html'));
+app.get('/', function (req, res) {
+    res.sendFile(path.join(__dirname, 'src', 'upload.html'));
 });
 
-app.get('/upload', function(req, res) {
-  res.sendFile(path.join(__dirname, 'src', 'upload.html'));
+app.get('/upload', function (req, res) {
+    res.sendFile(path.join(__dirname, 'src', 'upload.html'));
+});
+
+app.get('/demo', function (req, res) {
+    res.sendFile(path.join(__dirname, 'src', 'demo.html'));
+});
+
+app.get('/demo1', function (req, res) {
+    res.sendFile(path.join(__dirname, 'src', 'demo1.html'));
 });
 
 
-console.log('View demo at http://localhost:9000/demo.html');
+console.log('View demo at http://localhost:9000/');
 
 app.listen(9000);

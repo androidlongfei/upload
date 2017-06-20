@@ -1,12 +1,12 @@
-var express = require('express')
-var app = express()
-var bodyParser = require('body-parser')
-var cors = require('cors')
-
-var path = require('path')
+import express from 'express'
+import bodyParser from 'body-parser'
+import cors from 'cors'
+import path from 'path'
 import config from './config/global.js'
 import uploadRouter from './router/upload.js'
 import testRouter from './router/test.js'
+
+const app = express()
 
 // config
 app.set('uploadDir', path.join(__dirname, 'download'))

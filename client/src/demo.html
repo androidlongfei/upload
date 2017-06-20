@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>upload image</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+    <link rel="stylesheet" href="lib/css/weui.css">
+    <link rel="stylesheet" href="lib/css/jquery-weui.css">
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/demo.css">
+
+    <style media="screen">
+        .uploadInput {
+            display: none;
+        }
+
+    </style>
+
+</head>
+
+<body ontouchstart>
+    <header class='demos-header'>
+        <h1 class="demos-title">Uploader</h1>
+    </header>
+
+    <div class="weui-cells weui-cells_form">
+        <div class="weui-cell">
+            <div class="weui-cell__bd">
+                <div class="weui-uploader">
+                    <div class="weui-uploader__hd">
+                        <p class="weui-uploader__title">图片上传</p>
+                        <div class="weui-uploader__info">0/2</div>
+                    </div>
+                    <div class="weui-uploader__bd">
+                        <ul class="weui-uploader__files" id="uploaderFiles">
+                            <li class="weui-uploader__file" style="background-image:url(images/pic_160.png)"></li>
+                            <li class="weui-uploader__file" style="background-image:url(images/pic_160.png)"></li>
+                            <li class="weui-uploader__file" style="background-image:url(images/pic_160.png)"></li>
+                            <li class="weui-uploader__file weui-uploader__file_status" style="background-image:url(images/pic_160.png)">
+                                <div class="weui-uploader__file-content">
+                                    <i class="weui-icon-warn"></i>
+                                </div>
+                            </li>
+                            <li class="weui-uploader__file weui-uploader__file_status" style="background-image:url(images/pic_160.png)">
+                                <div class="weui-uploader__file-content">50%</div>
+                            </li>
+                        </ul>
+                        <div class="weui-uploader__input-box">
+                            <input id="imageType" class="weui-uploader__input" readonly>
+                            <!-- <input id="uploaderInput" class="weui-uploader__input" type="file" accept="image/*" multiple=""> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="uploadInput">
+            <input id="uploaderInput" type="file" accept="image/*" multiple="" readonly>
+        </div>
+        <div class="">
+            <button id="uploader-1" href="#">Upload</button>
+        </div>
+    </div>
+    <script src="lib/js/jquery.js"></script>
+    <script src="lib/js/fastclick.js"></script>
+    <script src="lib/js/jquery-weui.js"></script>
+    <script src="js/index.js" charset="utf-8"></script>
+    <script src="js/myAjax.js" charset="utf-8"></script>
+    <script src="js/demo.js" charset="utf-8"></script>
+</body>
+
+</html>
