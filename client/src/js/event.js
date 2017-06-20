@@ -1,4 +1,6 @@
-var host = 'http://localhost:8000';
+// var host = 'http://localhost:8000';
+var host = 'http://192.168.0.107:8000';
+
 // var host = null;
 
 new Uploader({
@@ -136,3 +138,7 @@ function onselectimage() {
     filenode.value = null;
   }
 }
+
+const ss = 122;
+
+console.log(`${ss}`);

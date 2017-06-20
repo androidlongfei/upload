@@ -1,0 +1,89 @@
+<!DOCTYPE HTML>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Uploader</title>
+    <style type="text/css">
+        .container {
+            margin: 0 auto;
+            width: 80%;
+            max-width: 680px;
+            padding: 60px 0;
+        }
+
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>上传文件</h1>
+
+        <h2>选择并且上传文件</h2>
+
+        <div class="cell">
+            <button id="uploader-1" href="#">Upload</button>
+        </div>
+
+        <h2>选择文件，点击上传文件后再上传</h2>
+
+        <div class="cell">
+            <p>
+                <button id="uploader-2" href="#">Select</button>
+                <span id="upload-2-text"></span></p>
+            <p>
+                <button id="submit-2" href="#">Upload</button>
+            </p>
+        </div>
+        <h2>只上传图片</h2>
+
+        <div class="cell">
+            <button id="uploader-3" href="#">Upload</button>
+        </div>
+
+        <h2>选择文件，上传文件，取消上传</h2>
+        <div class="cell">
+            <p><button id="uploader-4" href="#">Select</button>
+                <span id="upload-4-text"></span></p>
+            <p>
+                <button id="disable" href="#">Disable</button>
+                <button id="submit-4" href="#">Upload</button>
+            </p>
+        </div>
+
+        <h2>post发送json请求</h2>
+        <div class="cell">
+            <button id="postJson" type="button" class="btn btn-default">
+        post发送json请求
+      </button>
+        </div>
+
+        <h2>test请求</h2>
+        <div class="cell">
+            <button id="test" type="button" class="btn btn-default">
+        test请求
+      </button>
+        </div>
+
+        <h2>form-data上传</h2>
+        <div class="cell">
+            <div class="ps-image">
+                <input type="file" id="file" onchange="onselectimage()" style="filter:alpha(opacity=10);opacity:10;width:100%;height:100%;" />
+            </div>
+        </div>
+    </div>
+
+    <!-- view use -->
+    <script src="lib/js/jquery.js" charset="utf-8"></script>
+    <script src="js/index.js" charset="utf-8"></script>
+    <script src="js/myAjax.js" charset="utf-8"></script>
+    <script src="js/event.js" charset="utf-8"></script>
+
+    <!-- nodejs use -->
+    <!-- <script src="/lib/js/jquery.js" charset="utf-8"></script>
+  <script src="/js/index.js" charset="utf-8"></script>
+  <script src="/js/myAjax.js" charset="utf-8"></script>
+  <script src="/js/event.js" charset="utf-8"></script> -->
+</body>
+
+</html>
