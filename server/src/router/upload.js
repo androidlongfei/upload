@@ -3,11 +3,12 @@ import _ from 'lodash';
 var formidable = require('formidable');
 var path = require('path');
 var fs = require('fs');
+import config from '../config/global.js'
 const async = require('async');
 
 module.exports = function (app) {
     app.post('/upload', function (req, res) {
-        // console.log('req.headers', req.headers);
+        console.log('request', '/upload');
         async.waterfall([
             function (cb) {
                 console.log('__dirname', __dirname)
@@ -26,6 +27,7 @@ module.exports = function (app) {
                         console.log('path', file.path);
                         console.log('name', file.name);
                         console.log('type', file.type);
+                        console.log('size', file.size);
                         let fileSuffix = file.type.split('/')[1]
                         let oldname = file.path;
                         let newname = `${oldname}.${fileSuffix}`
@@ -33,8 +35,11 @@ module.exports = function (app) {
                         fs.rename(oldname, newname, function (err) {
                             if (err) console.log(err);
                             console.log('修改成功');
+                            let name = newname.substring(newname.lastIndexOf('/') + 1, newname.length)
                             let resImg = {};
-                            resImg.path = `http://10.4.52.32:8000:${uploadDir}/${newname}`
+                            resImg.path = `${config.host}:${config.port}/download/${name}`
+                            resImg.name = name
+                            resImg.size = file.size
                             resImgs.push(resImg)
                             cb(null, resImgs)
                             // if (files.length === resImg.length) {
