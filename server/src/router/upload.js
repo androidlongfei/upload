@@ -35,7 +35,15 @@ module.exports = function (app) {
                         fs.rename(oldname, newname, function (err) {
                             if (err) console.log(err);
                             console.log('修改成功');
-                            let name = newname.substring(newname.lastIndexOf('/') + 1, newname.length)
+                            let name = ''
+                            if (process.platform === 'win32') {
+                                // Windows
+                                name = newname.substring(newname.lastIndexOf('\\') + 1, newname.length)
+                            } else {
+                                // unix
+                                name = newname.substring(newname.lastIndexOf('/') + 1, newname.length)
+                            }
+                            console.log('name', name)
                             let resImg = {};
                             resImg.path = `${config.host}:${config.port}/download/${name}`
                             resImg.name = name

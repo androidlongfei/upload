@@ -1,5 +1,5 @@
-// var host = 'http://10.4.52.32:8000';
-var host = 'http://192.168.0.107:8000';
+var host = 'http://10.4.52.32:8000';
+// var host = 'http://192.168.0.107:8000';
 var filechooser = document.getElementById("choose");
 //    用于压缩图片的canvas
 var canvas = document.createElement("canvas");
@@ -47,10 +47,11 @@ filechooser.onchange = function () {
                 upload(result, file.type, $(li));
                 return;
             }
-            //      图片加载完毕之后进行压缩，然后上传
+            // 图片加载完毕之后进行压缩，然后上传
             if (img.complete) {
                 callback();
             } else {
+                // img.onload 事件在图片加载完成后立即执行。
                 img.onload = callback;
             }
 
@@ -93,7 +94,7 @@ function compress(img) {
     }
     canvas.width = width;
     canvas.height = height;
-    //        铺底色
+    //  铺底色
     ctx.fillStyle = "#fff";
     ctx.fillRect(0, 0, canvas.width, canvas.height);
     //如果图片像素大于100万则使用瓦片绘制

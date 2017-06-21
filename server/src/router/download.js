@@ -2,7 +2,7 @@
 
 import path from 'path'
 
-module.exports = function(app) {
+module.exports = function (app) {
     app.get('/download/:filename', function (req, res) {
         console.log('param', req.params);
         let filename = req.params.filename
