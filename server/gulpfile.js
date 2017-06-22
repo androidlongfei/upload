@@ -52,6 +52,14 @@ gulp.task('lint', ['clean'], () => {
 });
 
 if (isTest) {
+    gulp.task('default', ['babel_test'], function () {
+        // env('.env.json')
+        nodemon({
+            script: 'dist/index.js',
+            ext: 'js'
+        })
+    })
+
     // 将es6转化为es5, 只重新编译更改过的文件
     gulp.src('src/**/*.js')
         // 监控es6文件
@@ -60,14 +68,6 @@ if (isTest) {
         .pipe(babel())
         // 转换成 ES5 存放的路径
         .pipe(gulp.dest('dist'));
-
-    gulp.task('default', ['babel_test'], function () {
-        // env('.env.json')
-        nodemon({
-            script: 'dist/index.js',
-            ext: 'js'
-        })
-    })
 } else {
     gulp.task('default', ['babel'], function () {
         if (isRelease) {
