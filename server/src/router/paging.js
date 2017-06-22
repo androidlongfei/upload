@@ -4,27 +4,15 @@
  * @return {[type]}     [description]
  */
 import _ from 'lodash';
-
-let testData = [{
-        title: 'hello',
-        number: 1
-    },
-    {
-        title: 'hello',
-        number: 2
-    },
-    {
-        title: 'hello',
-        number: 3
-    }
-];
+import pingData from '../testData/paging.js'
 
 module.exports = function (app) {
     app.post('/paging', function (req, res) {
         console.log('paging body data', req.body);
+        console.log('paging', pingData);
         res.json({
-            testData: testData,
-            total: testData.length
+            testData: pingData.paging,
+            total: pingData.paging.length
         });
     });
 }
