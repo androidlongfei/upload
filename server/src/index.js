@@ -6,6 +6,7 @@ import config from './config/global.js'
 import uploadRouter from './router/upload.js'
 import testRouter from './router/test.js'
 import downloadRouter from './router/download.js'
+import pagingRouter from './router/paging.js'
 
 const app = express()
 
@@ -27,6 +28,7 @@ app.use(bodyParser.urlencoded({
 uploadRouter(app)
 downloadRouter(app)
 testRouter(app)
+pagingRouter(app)
 
 
 app.listen(config.port);
