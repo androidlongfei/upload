@@ -33,6 +33,10 @@ app.get('/demo1', function (req, res) {
     res.sendFile(path.join(__dirname, 'src', 'demo1.html'));
 });
 
+app.get('/pull', function (req, res) {
+    res.sendFile(path.join(__dirname, 'src', 'pull.html'));
+});
+
 
 console.log('View demo at http://localhost:9000/');
 

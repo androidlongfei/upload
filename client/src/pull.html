@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>下拉刷新</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+    <link rel="stylesheet" href="lib/css/weui.css">
+    <link rel="stylesheet" href="lib/css/jquery-weui.css">
+    <link rel="stylesheet" href="css/global.css">
+
+    <style media="screen">
+        .time {
+            /*display: -webkit-box;
+            display: -webkit-flex;
+            display: flex;
+            justify-content: center;*/
+            text-align: center;
+        }
+
+    </style>
+</head>
+
+<body ontouchstart>
+
+
+    <div class="weui-pull-to-refresh__layer">
+        <div class='weui-pull-to-refresh__arrow'></div>
+        <div class='weui-pull-to-refresh__preloader'></div>
+        <div class="down">下拉刷新</div>
+        <div class="up">释放刷新</div>
+        <div class="refresh">正在刷新</div>
+    </div>
+
+    <h1 class="demos-title">下拉刷新</h1>
+    <div class="time"><span id="time"></span></div>
+
+    <div class="weui-cells__title">带跳转的列表项</div>
+    <div id="list" class="weui-cells">
+        <!-- <a class="weui-cell weui-cell_access" href="javascript:;">
+      <div class="weui-cell__bd">
+        <p>cell standard</p>
+      </div>
+      <div class="weui-cell__ft">1
+      </div>
+    </a> -->
+    </div>
+
+    <div class="weui-loadmore">
+        <i class="weui-loading"></i>
+        <span class="weui-loadmore__tips">正在加载</span>
+    </div>
+
+    <script src="lib/js/jquery.js"></script>
+    <script src="lib/js/fastclick.js"></script>
+    <script src="lib/js/jquery-weui.js"></script>
+    <!-- <script src="jquery-weui.js"></script> -->
+    <script src="lib/js/underscore-min.js" charset="utf-8"></script>
+    <script src="lib/js/moment.min.js" charset="utf-8"></script>
+
+    <script src="js/myAjax.js" charset="utf-8"></script>
+    <script src="js/pull.js" charset="utf-8"></script>
+</body>
+
+</html>

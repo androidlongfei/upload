@@ -9,10 +9,16 @@ import pingData from '../testData/paging.js'
 module.exports = function (app) {
     app.post('/paging', function (req, res) {
         console.log('paging body data', req.body);
-        console.log('paging', pingData);
-        res.json({
-            testData: pingData.paging,
-            total: pingData.paging.length
-        });
-    });
+        let start = parseInt(req.body.start)
+        let count = parseInt(req.body.count)
+        let end = start + count
+        console.log(start, end);
+        let reust = _.slice(pingData.paging, start, end)
+        setTimeout(function () {
+            res.json({
+                testData: reust,
+                total: pingData.paging.length
+            })
+        }, 2000)
+    })
 }
