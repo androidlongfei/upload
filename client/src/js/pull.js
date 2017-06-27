@@ -62,7 +62,7 @@ function loadMoreFailed(data) {
 function initLoadMore() {
     //初始化加载更多
     loadStatus = 0;
-    $(document.body).infinite(65);
+    $(document.body).infinite(45);
     $('.weui-loadmore').hide();
 }
 
