@@ -11,17 +11,16 @@ module.exports = function (app) {
         console.log('request', '/upload');
         async.waterfall([
             function (cb) {
-                console.log('__dirname', __dirname)
+                // console.log('__dirname', __dirname)
                 var form = new formidable.IncomingForm();
                 var uploadDir = app.get('uploadDir');
-                console.log('uploadDir', uploadDir);
+                // console.log('uploadDir', uploadDir);
                 form.uploadDir = uploadDir;
                 form.parse(req, function (err, fields, files) {
                     if (err) {
 
                     }
-                    // console.log('fields', fields); // 表单传递的input数据
-                    // console.log('files', files); // 上传文件数据
+                    console.log('fields', JSON.stringify(fields)); // 表单传递的input数据
                     let resImgs = []
                     _.each(files, function (file) {
                         console.log('path', file.path);

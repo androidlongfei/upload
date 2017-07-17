@@ -1,5 +1,4 @@
-var host = 'http://10.4.52.32:8000';
-// var host = 'http://192.168.0.107:8000';
+var host = 'http://10.4.53.72:9100';
 var filechooser = document.getElementById("choose");
 //    用于压缩图片的canvas
 var canvas = document.createElement("canvas");
@@ -7,8 +6,8 @@ var ctx = canvas.getContext('2d');
 //    瓦片canvas
 var tCanvas = document.createElement("canvas");
 var tctx = tCanvas.getContext("2d");
-//最大100kb，否则需要压缩
-var maxsize = 200 * 1024;
+var maxsize = 100 * 1024;
+var chooseFile;
 $("#upload").on("click", function () {
         filechooser.click();
     })
@@ -21,23 +20,37 @@ $("#upload").on("click", function () {
 filechooser.onchange = function () {
     if (!this.files.length) return;
     console.log('files', this.files)
-    var files = Array.prototype.slice.call(this.files);
+    chooseFile = this.files;
+    //uploadPicture(chooseFile);
+    return;
+};
+
+$("#uploadPic").on("click", function () {
+    // alert('click upload', JSON.stringify(chooseFile))
+    uploadPicture(chooseFile)
+})
+
+// 上传图片
+function uploadPicture(files) {
+    // alert('uploadPicture ...', JSON.stringify(files));
+    var files = Array.prototype.slice.call(files);
+    // alert('files ...', JSON.stringify(files));
     if (files.length > 9) {
         alert("最多同时只可上传9张图片");
         return;
     }
+    // alert('files', files)
     files.forEach(function (file, i) {
         if (!/\/(?:jpeg|png|gif)/i.test(file.type)) return;
-        // console.log('file.type', file.type)
+        console.log('file.type', file.type)
         var reader = new FileReader();
         var li = document.createElement("li");
-        //获取图片大小
-        var size = getFileSize(file.size)
+        //          获取图片大小
+        var size = file.size / 1024 > 1024 ? (~~(10 * file.size / 1024 / 1024)) / 10 + "MB" : ~~(file.size / 1024) + "KB";
         li.innerHTML = '<div class="progress"><span></span></div><div class="size">' + size + '</div>';
         $(".img-list").append($(li));
         reader.onload = function () {
             var result = this.result;
-            console.log('this.result', this)
             var img = new Image();
             img.src = result;
             $(li).css("background-image", "url(" + result + ")");
@@ -47,11 +60,10 @@ filechooser.onchange = function () {
                 upload(result, file.type, $(li));
                 return;
             }
-            // 图片加载完毕之后进行压缩，然后上传
+            //      图片加载完毕之后进行压缩，然后上传
             if (img.complete) {
                 callback();
             } else {
-                // img.onload 事件在图片加载完成后立即执行。
                 img.onload = callback;
             }
 
@@ -63,19 +75,6 @@ filechooser.onchange = function () {
         };
         reader.readAsDataURL(file);
     })
-};
-
-function getFileSize(fileSize) {
-    let unit = fileSize / 1024
-    // ~~ 将浮点数转化微整数
-    if (unit < 1024) {
-        // KB
-        unit = ~~unit + "KB"
-    } else {
-        // MB
-        unit = ~~(10 * (unit / 1024)) / 10 + "MB"
-    }
-    return unit
 }
 
 //    使用canvas对大图片进行压缩
@@ -94,7 +93,7 @@ function compress(img) {
     }
     canvas.width = width;
     canvas.height = height;
-    //  铺底色
+    //        铺底色
     ctx.fillStyle = "#fff";
     ctx.fillRect(0, 0, canvas.width, canvas.height);
     //如果图片像素大于100万则使用瓦片绘制
@@ -125,6 +124,7 @@ function compress(img) {
 }
 //    图片上传，将base64的图片转成二进制对象，塞进formdata上传
 function upload(basestr, type, $li) {
+    // alert('upload', upload)
     var text = window.atob(basestr.split(",")[1]);
     var buffer = new Uint8Array(text.length);
     var pecent = 0,
@@ -136,13 +136,17 @@ function upload(basestr, type, $li) {
     var xhr = new XMLHttpRequest();
     var formdata = getFormData();
     formdata.append('imagefile', blob);
+    formdata.append('imageInfo', {
+        time: '2017',
+        address: 'beijing'
+    });
     var url = host ? host + '/upload' : '/upload';
     xhr.open('post', url, true);
     xhr.onreadystatechange = function () {
         if (xhr.readyState == 4 && xhr.status == 200) {
-            // console.log('xhr.responseText', xhr.responseText)
+            console.log('xhr.responseText', xhr.responseText)
             var jsonData = JSON.parse(xhr.responseText);
-            // console.log('jsonData', jsonData)
+            console.log('jsonData', jsonData)
             var imagedata = jsonData.resImgs[0] || {};
             var text = imagedata.path ? '上传成功' : '上传失败';
             console.log(text + '：' + imagedata.path);
@@ -154,7 +158,9 @@ function upload(basestr, type, $li) {
                 $(this).html(text);
             });
             if (!imagedata.path) return;
-            $(".pic-list").append('<a href="' + imagedata.path + '">' + imagedata.name + '（' + getFileSize(imagedata.size) + '）<img src="' + imagedata.path + '" /></a>');
+            // $(".pic-list").append('<a href="' + imagedata.path + '">' + imagedata.name + '（' + imagedata.size + '）<img src="' + imagedata.path + '" /></a>');
+            var size = imagedata.size / 1024 > 1024 ? (~~(10 * imagedata.size / 1024 / 1024)) / 10 + "MB" : ~~(imagedata.size / 1024) + "KB";
+            $(".pic-list").append('<a href="' + imagedata.path + '">' + imagedata.name + '（' + size + '）<img src="' + imagedata.path + '" /></a>');
         }
     };
     //数据发送进度，前50%展示该进度
