@@ -33,7 +33,15 @@ app.get('/demo1', function (req, res) {
     res.sendFile(path.join(__dirname, 'src', 'demo1.html'));
 });
 
+app.get('/pull', function (req, res) {
+    res.sendFile(path.join(__dirname, 'src', 'pull.html'));
+});
 
-console.log('View demo at http://localhost:9000/');
+app.get('/login', function (req, res) {
+    res.sendFile(path.join(__dirname, 'src', 'login.html'));
+});
+
+
+console.log('View demo at http://10.4.52.32:9000/');
 
 app.listen(9000);

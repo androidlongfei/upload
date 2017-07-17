@@ -1,17 +1,3 @@
-const paging = [{
-        title: 'hello',
-        number: 1
-    },
-    {
-        title: 'hello',
-        number: 2
-    },
-    {
-        title: 'hello',
-        number: 3
-    }
-];
-
 let getData = function (count) {
     let paging = []
     for (let i = 0; i < count; i++) {
@@ -29,5 +15,5 @@ let getItem = function (i) {
 }
 
 module.exports = {
-    paging: getData(40)
+    paging: getData(67)
 }
