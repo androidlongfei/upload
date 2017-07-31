@@ -10,6 +10,7 @@ module.exports = function (app) {
     app.get('/user', function (req, res) {
         console.log('user body data', req.body);
         setTimeout(function () {
+            // res.json(401, pingData.paging)
             res.json(pingData.paging)
         }, 2000)
     })

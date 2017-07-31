@@ -1,7 +1,7 @@
 module.exports = function (app) {
     app.post('/login', function (req, res) {
         console.log('/login')
-        console.log('user body data', req.body)
+        console.log('login body data', req.body)
         let result = {
             accessToken: '12321',
             user: {
