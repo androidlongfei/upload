@@ -7,6 +7,8 @@ import uploadRouter from './router/upload.js'
 import testRouter from './router/test.js'
 import downloadRouter from './router/download.js'
 import pagingRouter from './router/paging.js'
+import userRouter from './router/user.js'
+import authRouter from './router/auth.js'
 
 const app = express()
 
@@ -29,6 +31,8 @@ uploadRouter(app)
 downloadRouter(app)
 testRouter(app)
 pagingRouter(app)
+userRouter(app)
+authRouter(app)
 
 
 app.listen(config.port);

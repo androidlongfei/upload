@@ -1,5 +1,7 @@
 # 上传图片
 
+## 安装nodejs
+
 ## server端
 
 全局安装gulp
@@ -34,6 +36,16 @@ gulp
 ```shell
 cd ./upload/client
 npm install
+```
+
+设置IP地址
+
+```
+更改./client/src/js/demo1.js文件的host为本机IP地址
+
+例如:
+
+var host = 'http://10.4.53.72:9100';
 ```
 
 启动

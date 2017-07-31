@@ -10,10 +10,12 @@ let getData = function (count) {
 let getItem = function (i) {
     return {
         title: 'hello',
-        number: i
+        number: i,
+        id: i,
+        content: 'this is hello' + i + ' content'
     }
 }
 
 module.exports = {
-    paging: getData(67)
+    paging: getData(25)
 }
