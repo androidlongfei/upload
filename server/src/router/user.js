@@ -8,7 +8,8 @@ import pingData from '../testData/paging.js'
 
 module.exports = function (app) {
     app.get('/user', function (req, res) {
-        console.log('user body data', req.body);
+        console.log('get user query', req.query);
+        // console.log('get user params', req.params);
         setTimeout(function () {
             // res.json(401, pingData.paging)
             res.json(pingData.paging)

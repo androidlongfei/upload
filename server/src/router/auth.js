@@ -1,9 +1,11 @@
+import config from '../config/global.js'
+
 module.exports = function (app) {
     app.post('/login', function (req, res) {
         console.log('/login')
         console.log('login body data', req.body)
         let result = {
-            accessToken: '12321',
+            token: config.token,
             user: {
                 username: req.body.username
             },
